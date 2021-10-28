@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
 
+
+    public PlayerMove playerMove;
+
     public float maxHealth = 100f;
 
     private float currentHealth;
@@ -15,9 +18,6 @@ public class PlayerHealth : MonoBehaviour
             return currentHealth;
         }
     }
-
-
-    private float impulseForce;
 
 
 
@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        playerMove = FindObjectOfType<PlayerMove>();
         isDead = false;
         currentHealth = maxHealth;
     }
@@ -55,11 +55,6 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log(currentHealth);
         }
 
-        if (collision.gameObject.tag == "Ground" && impulseForce >= 20)
-        {
-            currentHealth -= 10;
-        }
-
         if (collision.gameObject.tag == "Activated")
         {
             if (currentHealth < maxHealth)
@@ -67,9 +62,18 @@ public class PlayerHealth : MonoBehaviour
                 currentHealth += 10;
                 Debug.Log(currentHealth);
             }
-            
+
         }
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground" && playerMove.SpeedData >= 8)
+        {
+            currentHealth -= 10 * playerMove.SpeedData / 4;
+        }
+    
     }
 
     void Dead()

@@ -6,8 +6,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637709231583546199
-    m_Hash: 1629843036
+      ticks: 637709504646233539
+    m_Hash: 1618122482
   m_LockFileStatus:
     m_FilePath: E:/MQ/COMP2160_2021/Assignment 2/Game-Development-Task-2/Game Development
       Task/Packages/packages-lock.json
@@ -15,8 +15,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637709231583667949
-    m_Hash: 829595459
+      ticks: 637709504646243503
+    m_Hash: 38719567
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

@@ -28,13 +28,10 @@ public class UIManager : MonoBehaviour
 
 
     public Slider slider;
-    public Color low;
-    public Color high;
 
 
     public GameManager gameManager;
-    public PlayerInteraction playerInteraction;
-    public PlayerHealth playerHealth;
+    
 
     void Awake()
     {
@@ -54,7 +51,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         resultPanel.SetActive(false);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         
     }
 
@@ -62,6 +59,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         SetHealthBar();
+
         timeInfo.text = Mathf.Floor(gameManager.CurrentTime).ToString() + "S";
 
         if (gameManager.IsGameOver == true)
@@ -71,21 +69,21 @@ public class UIManager : MonoBehaviour
             {
                 resultInfo.text =
                 "You Win!" + "\n" + "\n" +
-                "Checkpoint1:   " + playerInteraction.CheckpointsTime[0] + "\n" +
-                "Checkpoint2:   " + playerInteraction.CheckpointsTime[1] + "\n" +
-                "Checkpoint3:   " + playerInteraction.CheckpointsTime[2] + "\n" +
-                "Checkpoint4:   " + playerInteraction.CheckpointsTime[3] + "\n" +
-                "Checkpoint5:   " + playerInteraction.CheckpointsTime[4];
+                "Checkpoint1:   " + gameManager.playerInteraction.CheckpointsTime[0] + "\n" +
+                "Checkpoint2:   " + gameManager.playerInteraction.CheckpointsTime[1] + "\n" +
+                "Checkpoint3:   " + gameManager.playerInteraction.CheckpointsTime[2] + "\n" +
+                "Checkpoint4:   " + gameManager.playerInteraction.CheckpointsTime[3] + "\n" +
+                "Checkpoint5:   " + gameManager.playerInteraction.CheckpointsTime[4];
             }
             else
             {
                 resultInfo.text =
                 "You died!" + "\n" + "\n" +
-                "Checkpoint1:   " + playerInteraction.CheckpointsTime[0] + "\n" +
-                "Checkpoint2:   " + playerInteraction.CheckpointsTime[1] + "\n" +
-                "Checkpoint3:   " + playerInteraction.CheckpointsTime[2] + "\n" +
-                "Checkpoint4:   " + playerInteraction.CheckpointsTime[3] + "\n" +
-                "Checkpoint5:   " + playerInteraction.CheckpointsTime[4];
+                "Checkpoint1:   " + gameManager.playerInteraction.CheckpointsTime[0] + "\n" +
+                "Checkpoint2:   " + gameManager.playerInteraction.CheckpointsTime[1] + "\n" +
+                "Checkpoint3:   " + gameManager.playerInteraction.CheckpointsTime[2] + "\n" +
+                "Checkpoint4:   " + gameManager.playerInteraction.CheckpointsTime[3] + "\n" +
+                "Checkpoint5:   " + gameManager.playerInteraction.CheckpointsTime[4];
             }
             
 
@@ -94,8 +92,8 @@ public class UIManager : MonoBehaviour
 
     public void SetHealthBar()
     {
-        //slider.gameObject.SetActive(playerHealth.CurrentHealth < 100);
-        slider.value = playerHealth.CurrentHealth;
+        slider.gameObject.SetActive(gameManager.playerHealth.CurrentHealth < 100);
+        slider.value = gameManager.playerHealth.CurrentHealth;
         slider.maxValue = 100;
 
     }
@@ -107,6 +105,5 @@ public class UIManager : MonoBehaviour
         resultPanel.SetActive(false);
 
         GameManager.Instance.Start();
-        UIManager.Instance.Start();
     }
 }

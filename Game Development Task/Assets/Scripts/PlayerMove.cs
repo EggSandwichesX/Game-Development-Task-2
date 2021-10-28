@@ -6,7 +6,16 @@ public class PlayerMove : MonoBehaviour
 {
     private Rigidbody rb;
 
-    public float speedData;
+    private float speedData;
+    public float SpeedData
+    {
+        get
+        {
+            return speedData;
+        }
+    }
+
+    private float impulseForce;
 
     public bool isOnGround = false;
 
@@ -24,8 +33,8 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        rb = this.GetComponent<Rigidbody>();
+        //DontDestroyOnLoad(gameObject);
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -65,11 +74,13 @@ public class PlayerMove : MonoBehaviour
         speedData = Vector3.Distance(Vector3.zero, rb.velocity);
 
         rb.AddRelativeForce(new Vector3(0, 0, direction.y * 300));
+        
+        
         if (rb.drag >= 0)
             rb.drag = speedData / 2;
         if (speedData >= 2)
             transform.Rotate(new Vector3(0, direction.x / 2, 0));
         
-        //print(rb.velocity);
+        print(rb.velocity);
     }
 }

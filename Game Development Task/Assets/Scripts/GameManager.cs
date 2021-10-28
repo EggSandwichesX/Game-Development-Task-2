@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     public PlayerInteraction playerInteraction;
     public PlayerHealth playerHealth;
+    public PlayerMove playerMove;
 
     private float currentTime;
     public float CurrentTime
@@ -69,9 +70,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        playerHealth = FindObjectOfType<PlayerHealth>();
+        playerInteraction = FindObjectOfType<PlayerInteraction>();
+        playerMove = FindObjectOfType<PlayerMove>();
+
         Time.timeScale = 1;
         currentTime = 0; // reset the current time
         isGameOver = false;
+        Debug.Log("Game start!");
     }
 
     // Update is called once per frame
