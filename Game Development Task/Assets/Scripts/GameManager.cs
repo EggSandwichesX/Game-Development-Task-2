@@ -74,9 +74,12 @@ public class GameManager : MonoBehaviour
         playerInteraction = FindObjectOfType<PlayerInteraction>();
         playerMove = FindObjectOfType<PlayerMove>();
 
-        Time.timeScale = 1;
         currentTime = 0; // reset the current time
         isGameOver = false;
+
+        Time.timeScale = 1;
+        
+        
         Debug.Log("Game start!");
     }
 
@@ -85,6 +88,7 @@ public class GameManager : MonoBehaviour
     {
         UpdateTime();
         GameOver();
+        Analytics();
     }
 
     private void UpdateTime()
@@ -94,13 +98,13 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        if (playerHealth.IsDead == true)
+        if (playerHealth.IsDead == true) // Lose
         {
             isGameOver = true;
             Time.timeScale = 0; // Pause the game
         }
 
-        if (playerInteraction.CurrentPoint == 5)
+        if (playerInteraction.CurrentPoint == 4) // Win
         {
             isGameOver = true;
             hasWon = true;
@@ -108,4 +112,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Analytics()
+    {
+        Debug.Log(currentTime);
+        Debug.Log(playerMove.Direction);
+        Debug.Log(playerInteraction.CheckpointsTime[playerInteraction.CurrentPoint]);
+
+    }
 }

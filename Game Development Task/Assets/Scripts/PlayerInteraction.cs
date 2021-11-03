@@ -5,6 +5,13 @@ using UnityEngine.UI;
 public class PlayerInteraction : MonoBehaviour
 {
     private float timer;
+    public float Timer
+    {
+        get
+        {
+            return timer;
+        }
+    }
 
     private int currentPoint = 0;
     public int CurrentPoint
@@ -15,8 +22,6 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    private int nextPoint = 1;
-
     private string[] checkpointsTime;
     public string[] CheckpointsTime
     {
@@ -24,6 +29,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             return checkpointsTime;
         }
+
     }
 
     public GameObject[] checkpoints;
@@ -48,7 +54,6 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        
 
     }
     private void OnTriggerEnter(Collider other)
@@ -56,12 +61,11 @@ public class PlayerInteraction : MonoBehaviour
 
         if (other.gameObject.tag == "Activated")
         {
-            checkpointsTime[currentPoint] = Mathf.Floor(timer).ToString() + "S";
-            //Debug.Log(checkpointsTime[currentPoint]);
-
             activateCheckpoint();
-            currentPoint++;
+            checkpointsTime[currentPoint] = Mathf.Floor(timer).ToString() + "S";
             other.gameObject.SetActive(false);
+            
+            
             
         }
 
@@ -71,14 +75,15 @@ public class PlayerInteraction : MonoBehaviour
     {
         
 
-        if (currentPoint < checkpoints.Length - 1)
+        if (currentPoint != checkpoints.Length - 1)
         {
+            int nextPoint = currentPoint + 1;
             
             checkpoints[nextPoint].gameObject.tag = "Activated";
             checkpoints[nextPoint].GetComponent<MeshRenderer>().material = m_checkpoint;
             checkpoints[nextPoint].GetComponent<SphereCollider>().enabled = true;
-            nextPoint++;
-            
+
+            currentPoint++;
 
         }
         

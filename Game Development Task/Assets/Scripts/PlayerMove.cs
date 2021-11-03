@@ -15,8 +15,6 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private float impulseForce;
-
     public bool isOnGround = false;
 
     // get the input values
@@ -33,7 +31,6 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //DontDestroyOnLoad(gameObject);
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -81,6 +78,8 @@ public class PlayerMove : MonoBehaviour
         if (speedData >= 2)
             transform.Rotate(new Vector3(0, direction.x / 2, 0));
         
-        print(rb.velocity);
+        //print(rb.velocity);
     }
+
+    
 }

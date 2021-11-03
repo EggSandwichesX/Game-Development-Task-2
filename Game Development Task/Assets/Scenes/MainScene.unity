@@ -328,6 +328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aab59b97bc666e4b95835a9d0b6f89b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMove: {fileID: 0}
+  maxHealth: 100
 --- !u!114 &205702362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2153,11 +2155,7 @@ MonoBehaviour:
   resultInfo: {fileID: 306419896}
   resultPanel: {fileID: 728348252}
   slider: {fileID: 311405880}
-  low: {r: 1, g: 0, b: 0, a: 0}
-  high: {r: 0.09919691, g: 1, b: 0, a: 0}
   gameManager: {fileID: 1931961339}
-  playerInteraction: {fileID: 205702362}
-  playerHealth: {fileID: 205702361}
 --- !u!1001 &1297623689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2953,6 +2951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInteraction: {fileID: 205702362}
   playerHealth: {fileID: 205702361}
+  playerMove: {fileID: 0}
 --- !u!4 &1931961340
 Transform:
   m_ObjectHideFlags: 0
@@ -3313,7 +3312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 457624215994349339, guid: 16ffe06e68d907d4fbce4014056ffe46, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 457624215994349339, guid: 16ffe06e68d907d4fbce4014056ffe46, type: 3}
       propertyPath: m_LocalPosition.z
